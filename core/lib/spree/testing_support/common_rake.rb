@@ -29,6 +29,12 @@ class CommonRakeTasks
           puts 'Running extension installation generator...'
           sh "bin/rails generate #{rake_generator_namespace}:install --auto-run-migrations"
         end
+
+        puts
+        puts "----------"
+        puts "solidus - CommonRakeTasks#initialize - common:test_app - END"
+        puts "----------"
+        puts
       end
 
       task :seed do |_t, _args|

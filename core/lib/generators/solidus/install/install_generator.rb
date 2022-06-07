@@ -93,6 +93,13 @@ module Solidus
         template "vendor/assets/stylesheets/spree/frontend/all.css"
       end
 
+      puts
+      puts "----------"
+      puts "Solidus::InstallGenerator#setup_assets"
+      puts "Rails.env.test?: #{Rails.env.test?}"
+      puts "----------"
+      puts
+
       if defined?(Spree::Backend) || Rails.env.test?
         template "vendor/assets/javascripts/spree/backend/all.js"
         template "vendor/assets/stylesheets/spree/backend/all.css"
