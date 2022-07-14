@@ -16,7 +16,8 @@ module Spree
       end
 
       config.active_record.yaml_column_permitted_classes ||= []
-      config.active_record.yaml_column_permitted_classes.concat([Symbol, BigDecimal]).uniq!
+      config.active_record.yaml_column_permitted_classes
+        .concat([Symbol, BigDecimal, ActiveSupport::HashWithIndifferentAccess]).uniq!
 
       initializer "spree.environment", before: :load_config_initializers do |app|
         app.config.spree = Spree::Config.environment
