@@ -2,7 +2,10 @@
 
 class SetPromotionsWithAnyPolicyToAllIfPossible < ActiveRecord::Migration[5.2]
   def up
-    Spree::Promotion.where(match_policy: :any).includes(:promotion_rules).all.each do |promotion|
+    promotions = Spree::Promotion.where(match_policy: :any)
+    promotions_including_rules = promotions.includes(:promotion_rules)
+
+    promotions_including_rules.all.each do |promotion|
       if promotion.promotion_rules.length <= 1
         promotion.update!(match_policy: :all)
       else

@@ -23,7 +23,9 @@ class CommonRakeTasks
         puts "Setting up dummy database..."
 
         sh "bin/rails db:environment:set RAILS_ENV=test"
-        sh "bin/rails db:drop db:create db:migrate VERBOSE=false RAILS_ENV=test"
+        sh "bin/rails db:drop VERBOSE=false RAILS_ENV=test"
+        sh "bin/rails db:create VERBOSE=false RAILS_ENV=test"
+        sh "bin/rails db:migrate VERBOSE=false RAILS_ENV=test"
 
         if extension_installation_generator_exists?
           puts 'Running extension installation generator...'
